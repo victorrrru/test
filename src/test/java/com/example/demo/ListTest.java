@@ -1,0 +1,35 @@
+package com.example.demo;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.*;
+
+/**
+ * Created by Administrator on 2017/7/29
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ListTest {
+
+    @Test
+    public void linkedListTest() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(-8);
+        list.add(30);
+//
+//        Collections.sort(list);
+//        Collections.reverse(list);
+        Comparator<Object> comparator = Collections.reverseOrder();
+        Collections.sort(list, comparator);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+    }
+
+}
+

@@ -17,7 +17,8 @@ public class MapTest {
     @Test
     public void hashMapTest() {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, "张三");
+        String q = map.put(1, "张三");
+        String a = map.put(null, "nfkdjfbk");
         map.put(2, "李四");
         map.put(3, "王五");
 
@@ -39,11 +40,15 @@ public class MapTest {
         for (Map.Entry<Integer, String> entry: map.entrySet()) {
             System.out.println(entry.getValue());
         }
+
+        for (Integer key: map.keySet()) {
+            System.out.println(map.get(key));
+        }
     }
 
     @Test
     public void hashTableTest() {
-        Map<Integer, String> map = new Hashtable<>();
+        Hashtable<Integer, String> map = new Hashtable<>();
         map.put(1, "张三");
         map.put(2, "李四");
         map.put(3, "王五");
@@ -62,6 +67,18 @@ public class MapTest {
          */
         for (Map.Entry<Integer, String> entry: map.entrySet()) {
             System.out.println(entry.getValue());
+        }
+
+        /**
+         * map.elements()每次生成的枚举迭代器都不是一个对象
+         */
+        Enumeration<String> values = map.elements();
+        while (map.elements().hasMoreElements()) {
+            String s = map.elements().nextElement();
+            System.out.println(s);
+        }
+        for (Enumeration<String> elements = map.elements();  elements.hasMoreElements(); ) {
+            System.out.println(elements.nextElement());
         }
     }
 
