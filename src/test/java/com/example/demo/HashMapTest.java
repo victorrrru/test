@@ -12,10 +12,10 @@ import java.util.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class MapTest {
+public class HashMapTest {
 
     @Test
-    public void hashMapTest() {
+    public void test1() {
         Map<Integer, String> map = new HashMap<>();
         String q = map.put(1, "张三");
         String a = map.put(null, "nfkdjfbk");
@@ -47,7 +47,7 @@ public class MapTest {
     }
 
     @Test
-    public void hashTableTest() {
+    public void test2() {
         Hashtable<Integer, String> map = new Hashtable<>();
         map.put(1, "张三");
         map.put(2, "李四");
@@ -80,6 +80,17 @@ public class MapTest {
         for (Enumeration<String> elements = map.elements();  elements.hasMoreElements(); ) {
             System.out.println(elements.nextElement());
         }
+    }
+
+    @Test
+    public void test3() {
+        Student s = new Student();
+        s.setId(1);
+        Student ss = new Student();
+        ss.setId(1);
+        System.out.println(s.hashCode());
+        System.out.println(ss.hashCode());
+        System.out.println(s.equals(ss));
     }
 
 }
