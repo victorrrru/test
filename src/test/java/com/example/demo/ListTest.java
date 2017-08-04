@@ -31,5 +31,24 @@ public class ListTest {
         }
     }
 
+    @Test
+    public void test2() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(-8);
+        list.add(30);
+
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(3);
+
+        list.toArray(new Integer[0]);
+        Comparator<Object> comparator = Collections.reverseOrder();
+        Collections.sort(list, comparator);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+    }
+
 }
 
