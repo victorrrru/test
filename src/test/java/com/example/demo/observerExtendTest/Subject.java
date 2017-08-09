@@ -1,6 +1,5 @@
-package com.example.demo.ObserverTest;
+package com.example.demo.observerExtendTest;
 
-import javax.xml.ws.soap.Addressing;
 import java.util.LinkedList;
 import java.util.List;
 

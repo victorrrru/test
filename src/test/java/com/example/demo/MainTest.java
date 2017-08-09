@@ -1,9 +1,13 @@
-package cn.rain.demo;
+package com.example.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -26,6 +30,22 @@ public class MainTest {
         a <<= 1;
         long b = 1 << 32;
         System.out.println(a);
+    }
+
+    @Test
+    public void test3() {
+        /**
+         * 8种基本类型是不能被泛型的，
+         */
+        Byte[] bytes = {1, 5, 6};
+        List list = Arrays.asList( bytes);
+        System.out.println(list.size());
+        System.out.println(list.get(0));
+    }
+
+    @Test
+    public void test4() {
+
     }
 
 }
