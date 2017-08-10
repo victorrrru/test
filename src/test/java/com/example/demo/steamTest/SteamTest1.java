@@ -2,10 +2,7 @@ package com.example.demo.steamTest;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -123,5 +120,34 @@ public class SteamTest1 {
             System.out.println(entry.getKey() + ":" + entry.getValue().getValue());
         }
 
+    }
+
+    /**
+     * 对skin和limit验证
+     */
+    @Test
+    public void test8() {
+        List<Integer> nums = new ArrayList();
+        nums.add(1);
+        nums.add(1);
+        nums.add(null);
+        nums.add(2);
+        nums.add(3);
+        nums.add(4);
+        nums.add(null);
+        nums.add(5);
+        nums.add(6);
+        nums.add(7);
+        nums.add(8);
+        nums.add(9);
+        nums.add(10);
+        System.out.println("sum is:"+nums.stream()
+                .filter(num -> num != null)
+                .distinct()
+                .mapToInt(num -> num * 2)
+                .peek(System.out::println)
+                .skip(5)
+                .limit(4)
+                .sum());
     }
 }
