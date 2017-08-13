@@ -10,13 +10,13 @@ import java.util.Vector;
  * Created By victorrrr on 2017/8/12
  */
 public class IoTest {
-
+    private String str = "C:\\Users\\Administrator\\Desktop";
     /**
      * 文件处理示例
      */
     @Test
     public void createFile() {
-        File f = new File("C:/Users/think/Desktop/SS/P.txt");
+        File f = new File(str + "/SS/P.txt");
         try {
             f.createNewFile();  //当且仅当不存在具有此抽象路径名指定名称的文件时，不可分地创建一个新的空文件。
             System.out.println("该分区大小" + f.getTotalSpace() / (1024 * 1024 * 1024) + "G"); //返回由此抽象路径名表示的文件或目录的名称。
@@ -38,7 +38,7 @@ public class IoTest {
         int count = 0;  //统计文件字节长度
         InputStream streamReader = null;   //文件输入流
         try {
-            streamReader = new FileInputStream(new File("C:/Users/think/Desktop/cfd.jpg"));
+            streamReader = new FileInputStream(new File(str + "/cfd.jpg"));
           /*1.new File()里面的文件地址也可以写成D:\\David\\Java\\java 高级进阶\\files\\tiger.jpg,前一个\是用来对后一个
            * 进行转换的，FileInputStream是有缓冲区的，所以用完之后必须关闭，否则可能导致内存占满，数据丢失。
           */
@@ -73,8 +73,8 @@ public class IoTest {
         FileInputStream input = null;
         FileOutputStream out = null;
         try {
-            input = new FileInputStream("C:/Users/think/Desktop/cfd.jpg");
-            out = new FileOutputStream("C:/Users/think/Desktop/cfd2.jpg"); //如果文件不存在会自动创建
+            input = new FileInputStream(str + "/cfd.jpg");
+            out = new FileOutputStream(str + "/cfd2.jpg"); //如果文件不存在会自动创建
 
             while ((numberRead = input.read(buffer)) != -1) {  //numberRead的目的在于防止最后一次读取的字节小于buffer长度，
                 out.write(buffer, 0, numberRead);       //否则会自动被填充0
@@ -104,11 +104,11 @@ public class IoTest {
         ObjectInputStream objectreader = null;
 
         try {
-            objectwriter = new ObjectOutputStream(new FileOutputStream("C:/Users/think/Desktop/student.txt"));
+            objectwriter = new ObjectOutputStream(new FileOutputStream(str + "/student.txt"));
             objectwriter.writeObject(new Student("gg", 22));
             objectwriter.writeObject(new Student("tt", 18));
             objectwriter.writeObject(new Student("rr", 17));
-            objectreader = new ObjectInputStream(new FileInputStream("C:/Users/think/Desktop/student.txt"));
+            objectreader = new ObjectInputStream(new FileInputStream(str + "/student.txt"));
             for (int i = 0; i < 3; i++) {
                 System.out.println(objectreader.readObject());
             }
@@ -140,7 +140,7 @@ public class IoTest {
                             new Student("momor",95),
                             new Student("Bush",88)};
         try {
-            DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream("C:/Users/think/Desktop/student.txt"));
+            DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(str + "/student.txt"));
 
             for(Student member : members) {
                 //写入UTF字符串
@@ -149,12 +149,12 @@ public class IoTest {
                 dataOutputStream.writeInt(member.getAge());
             }
 
-            //所有数据至目的地
+            //所有数据至目的地to
             dataOutputStream.flush();
             //关闭流
             dataOutputStream.close();
 
-            DataInputStream dataInputStream = new DataInputStream(new FileInputStream("C:/Users/think/Desktop/student.txt"));
+            DataInputStream dataInputStream = new DataInputStream(new FileInputStream(str + "/student.txt"));
 
             //读出数据并还原为对象
             for (int i = 0; i < members.length; i++) {
@@ -230,14 +230,14 @@ public class IoTest {
         try {
             // 构建流集合。
             Vector<InputStream> vector = new Vector<InputStream>();
-            vector.addElement(new FileInputStream("C:/Users/think/Desktop/test1.txt"));
-            vector.addElement(new FileInputStream("C:/Users/think/Desktop/test2.txt"));
-            vector.addElement(new FileInputStream("C:/Users/think/Desktop/test3.txt"));
+            vector.addElement(new FileInputStream(str + "/test1.txt"));
+            vector.addElement(new FileInputStream(str + "/test2.txt"));
+            vector.addElement(new FileInputStream(str + "/test3.txt"));
             Enumeration<InputStream> e = vector.elements();
 
             sis = new SequenceInputStream(e);
 
-            bos = new BufferedOutputStream(new FileOutputStream("C:/Users/think/Desktop/test4.txt"));
+            bos = new BufferedOutputStream(new FileOutputStream(str + "/test4.txt"));
             // 读写数据
             byte[] buf = new byte[1024];
             int len = 0;
@@ -277,7 +277,7 @@ public class IoTest {
         PrintWriter writer = null;    //写字符到控制台的流
 
         try {
-            reader = new FileReader("C:/Users/think/Desktop/test1.txt");
+            reader = new FileReader(str + "/test1.txt");
             writer = new PrintWriter(System.out);  //PrintWriter可以输出字符到文件，也可以输出到控制台
 //            writer = new PrintWriter(new FileWriter("C:/Users/think/Desktop/test5.txt"));
             while ((numberRead = reader.read(buffer)) != -1) {
@@ -303,24 +303,24 @@ public class IoTest {
      */
     @Test
     public void testBufferedWriter() {
-        String str;
+        String str1;
         BufferedWriter writer = null;
         BufferedReader reader = null;
 
         Vector<String> fileName = new Vector<>();
-        fileName.addElement("C:/Users/think/Desktop/test1.txt");
-        fileName.addElement("C:/Users/think/Desktop/test2.txt");
-        fileName.addElement("C:/Users/think/Desktop/test3.txt");
-        fileName.addElement("C:/Users/think/Desktop/test4.txt");
+        fileName.addElement(str + "/test1.txt");
+        fileName.addElement(str + "/test2.txt");
+        fileName.addElement(str + "/test3.txt");
+        fileName.addElement(str + "/test4.txt");
 
         //构建对该文件您的输入流
         try {
-            writer = new BufferedWriter(new FileWriter("C:/Users/think/Desktop/test6.txt"));
+            writer = new BufferedWriter(new FileWriter(str + "/test6.txt"));
             for(String name : fileName){
                 reader = new BufferedReader(new FileReader(name));
 
-                while ((str = reader.readLine()) != null) {
-                    writer.write(str);
+                while ((str1 = reader.readLine()) != null) {
+                    writer.write(str1);
                     writer.newLine();
                 }
             }
@@ -352,7 +352,7 @@ public class IoTest {
      */
     @Test
     public void testStreamTokenizer() {
-        String fileName = "C:/Users/think/Desktop/test6.txt";
+        String fileName = str + "/test6.txt";
         FileReader fileReader = null;
         try {
             fileReader = new FileReader(fileName);
