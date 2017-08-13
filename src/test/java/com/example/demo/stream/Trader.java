@@ -1,4 +1,4 @@
-package com.example.demo.steamTest;
+package com.example.demo.stream;
 
 /**
  * Created by Administrator on 2017/8/9

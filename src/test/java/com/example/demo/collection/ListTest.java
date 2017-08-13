@@ -1,4 +1,4 @@
-package com.example.demo.map;
+package com.example.demo.collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.example.demo.observerTest;
+package com.example.demo.observerExtend;
 
 import java.util.LinkedList;
 import java.util.List;

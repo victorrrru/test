@@ -1,4 +1,4 @@
-package com.example.demo.observerExtendTest;
+package com.example.demo.observer;
 
 /**
  * Created By victorrrr on 2017/8/7

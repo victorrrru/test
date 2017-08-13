@@ -1,4 +1,4 @@
-package com.example.demo.steamTest;
+package com.example.demo.stream;
 
 import org.junit.Test;
 

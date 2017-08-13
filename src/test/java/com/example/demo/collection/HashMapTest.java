@@ -1,4 +1,4 @@
-package com.example.demo.map;
+package com.example.demo.collection;
 
 import com.example.demo.Student;
 import org.junit.Test;
@@ -71,7 +71,7 @@ public class HashMapTest {
         }
 
         /**
-         * map.elements()每次生成的枚举迭代器都不是一个对象
+         * collection.elements()每次生成的枚举迭代器都不是一个对象
          */
         Enumeration<String> values = map.elements();
         while (map.elements().hasMoreElements()) {
