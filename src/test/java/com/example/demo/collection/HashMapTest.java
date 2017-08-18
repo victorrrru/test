@@ -20,6 +20,7 @@ public class HashMapTest {
         Map<Integer, String> map = new HashMap<>();
         String q = map.put(1, "张三");
         String a = map.put(null, "nfkdjfbk");
+        map.put(1,"dbghsdf");
         map.put(2, "李四");
         map.put(3, "王五");
 

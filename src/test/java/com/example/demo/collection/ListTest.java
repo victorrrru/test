@@ -50,5 +50,16 @@ public class ListTest {
         }
     }
 
+    @Test
+    public void test3() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(2);
+        list.add(30);
+
+        HashSet<Integer> set = new HashSet<>(list);
+    }
+
 }
 
