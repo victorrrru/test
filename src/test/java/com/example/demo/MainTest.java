@@ -5,6 +5,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +49,11 @@ public class MainTest {
 
     @Test
     public void test4() {
-
+        System.out.println(Instant.now());
+        System.out.println(LocalDateTime.now());
+        LocalTime time = LocalTime.now().withNano(0).withSecond(0).withMinute(0);
+        System.out.println(time);
+        System.out.println(Instant.ofEpochMilli(System.currentTimeMillis()));
     }
 
 }
