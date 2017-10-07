@@ -46,10 +46,10 @@ public class SteamTest1 {
                 new Transaction(xiaobai, 2016,950)
         );
 
-        List<Transaction> stream = transactions.stream().filter(t -> t.getYear() == 2016)
+        transactions.stream().filter(t -> t.getYear() == 2016)
                 .sorted(Comparator.comparing(a -> a.getValue()))
-                .collect(Collectors.toList());
-        System.out.println(stream);
+                .map(Transaction::getTrader).map(Trader::getName)
+                .collect(Collectors.toList()).forEach(System.out :: println);
 
     }
 
@@ -149,5 +149,33 @@ public class SteamTest1 {
                 .skip(5)
                 .limit(4)
                 .sum());
+    }
+    @Test
+    public void test9() {
+        Map<Integer, Short> map = new HashMap<>();
+        Map<Integer, Integer> sort = new HashMap<>();
+        map.put(1, (short) 200);
+        map.put(2, (short) 100);
+        map.put(4, (short) 100);
+        map.put(78, (short) 500);
+        map.put(98, (short) 80);
+        map.put(22, (short) 130);
+        map.put(32, (short) 130);
+        map.put(12, (short) 130);
+        map.put(21, (short) 400);
+        map.put(44, (short) 20);
+
+        List<Map.Entry<Integer, Short>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));
+//        list.stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getValue).forEach(System.out::println);
+        for (int i = 0; i < list.size(); i++) {
+            sort.put(list.get(i).getKey(), i + 1);
+            if (i > 0) {
+                if (list.get(i).getValue().equals(list.get(i - 1).getValue())) {
+                    sort.put(list.get(i).getKey(), sort.get(list.get(i - 1).getKey()));
+                }
+            }
+        }
+        System.out.println(sort.toString());
     }
 }
