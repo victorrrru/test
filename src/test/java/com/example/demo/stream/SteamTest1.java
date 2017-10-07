@@ -166,7 +166,14 @@ public class SteamTest1 {
         map.put(44, (short) 20);
 
         List<Map.Entry<Integer, Short>> list = new ArrayList<>(map.entrySet());
+        /*
+        自然排序
+         */
+//        Collections.sort(list, Comparator.comparing(Map.Entry::getValue));
         Collections.sort(list, (a, b) -> b.getValue().compareTo(a.getValue()));
+        /*
+        流本身不修改原流(数据源)，对流操作只会创建一个新的流，其中包括排序后的结果
+         */
 //        list.stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getValue).forEach(System.out::println);
         for (int i = 0; i < list.size(); i++) {
             sort.put(list.get(i).getKey(), i + 1);
@@ -176,6 +183,5 @@ public class SteamTest1 {
                 }
             }
         }
-        System.out.println(sort.toString());
     }
 }
