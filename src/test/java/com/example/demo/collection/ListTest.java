@@ -1,10 +1,12 @@
 package com.example.demo.collection;
 
+import com.example.demo.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -59,6 +61,20 @@ public class ListTest {
         list.add(30);
 
         HashSet<Integer> set = new HashSet<>(list);
+    }
+    @Test
+    public void test4() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        List<Student> list = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            Date date = new Date((long) (System.currentTimeMillis() + Math.random() * 1000000000));
+            Student student = new Student();
+            student.setBirthday(date);
+            list.add(student);
+            System.out.println(format.format(date));
+        }
+        list.sort(Comparator.comparing(Student::getBirthday));
+        list.stream().map(Student::getBirthday).forEach(System.out::println);
     }
 
 }
