@@ -22,9 +22,7 @@ public class Consumer implements MessageListener, ExceptionListener {
 
     public static Boolean isconnection=false;
     /**
-     * @Description 连接ActiveMQ
-     * @Author 刘俊重
-     * @Date 2017/12/20
+     *  连接ActiveMQ
      */
     private void init() throws JMSException {
         connectionFactory = new ActiveMQConnectionFactory(name,password,url);
@@ -36,14 +34,13 @@ public class Consumer implements MessageListener, ExceptionListener {
 
     public void consumerMessage() throws JMSException {
         this.init();
-        connection.start();
-
         //设置消息监听和异常监听
         consumer.setMessageListener(this);
         connection.setExceptionListener(this);
+        connection.start();
         System.out.println("消费者开始监听....");
         isconnection = true;
-        //Message receive = consumer.receive();
+//        Message receive = consumer.receive();
     }
 
     public void close() throws JMSException {
