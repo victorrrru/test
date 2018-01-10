@@ -5,5 +5,6 @@ package com.example.demo.Reflex;
  * @date 2017/12/29 16:12
  */
 public interface Sale {
-    int clothes(int size);
+    void clothes(int size);
+    void sale();
 }

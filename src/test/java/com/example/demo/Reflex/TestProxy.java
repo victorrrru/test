@@ -1,6 +1,5 @@
 package com.example.demo.Reflex;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -12,14 +11,22 @@ import java.lang.reflect.Proxy;
 public class TestProxy {
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Sale proxy = (Sale) Proxy.newProxyInstance(SaleService.class.getClassLoader(), SaleService.class.getInterfaces(),
-                (proxy1, method, args1) -> method.invoke(proxy1));
-        System.out.println(proxy.clothes(40));
+                (proxy1, method, args1) -> {
+                    System.out.println("before");
+                    Object invoke = method.invoke(SaleService.class.newInstance(), args1);
+                    System.out.println("end");
+                    return invoke;
+                });
+        proxy.clothes(40);
+        proxy.sale();
         System.out.println("------------");
-        Class<SaleService> aClass = SaleService.class;
+//        Class<SaleService> aClass = SaleService.class;
 //        Class<?> aClass = Class.forName("com.example.demo.Reflex.SaleService");
-        Object o = aClass.newInstance();
-        Method[] methods = aClass.getMethods();
-        Object invoke = methods[0].invoke(o, 40);
-        System.out.println(invoke);
+//        Object o = aClass.newInstance();
+//        Method[] methods = aClass.getMethods();
+//        for (Method method : methods) {
+//            Object invoke = method.invoke(o);
+//            System.out.println(invoke);
+//        }
     }
 }
