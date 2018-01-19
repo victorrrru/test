@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.collection;
 
 import java.util.Date;
 

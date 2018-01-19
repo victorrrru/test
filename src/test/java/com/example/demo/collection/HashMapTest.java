@@ -1,6 +1,5 @@
 package com.example.demo.collection;
 
-import com.example.demo.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

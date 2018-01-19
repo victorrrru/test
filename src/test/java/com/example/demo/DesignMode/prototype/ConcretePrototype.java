@@ -1,4 +1,4 @@
-package com.example.demo.prototype;
+package com.example.demo.DesignMode.prototype;
 
 /**
  * Created by victorrrr
