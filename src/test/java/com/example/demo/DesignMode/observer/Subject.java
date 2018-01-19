@@ -1,4 +1,4 @@
-package com.example.demo.observer;
+package com.example.demo.DesignMode.observer;
 
 import java.util.LinkedList;
 import java.util.List;

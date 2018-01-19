@@ -1,4 +1,4 @@
-package com.example.demo.decorator.test2;
+package com.example.demo.DesignMode.decorator.test1;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

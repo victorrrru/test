@@ -1,9 +1,9 @@
-package com.example.demo.decorator.test2;
+package com.example.demo.DesignMode.decorator.test1;
 
 /**
  * Created by victorrrr on 2017/6/7.
  */
-public class ChickenHambur extends Hamburger {
+public class ChickenHambur implements Hamburger{
 
     @Override
     public String getName() {

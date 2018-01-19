@@ -1,4 +1,4 @@
-package com.example.demo.observer;
+package com.example.demo.DesignMode.observer;
 
 /**
  * Created By victorrrr on 2017/8/7

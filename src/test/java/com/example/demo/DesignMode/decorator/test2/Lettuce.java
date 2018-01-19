@@ -1,4 +1,4 @@
-package com.example.demo.decorator.test2;
+package com.example.demo.DesignMode.decorator.test2;
 
 /**
  * Created by victorrrr on 2017/6/7.

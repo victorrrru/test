@@ -1,8 +1,7 @@
-package com.example.demo.Http;
+package com.example.demo.MessageFormat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.MessageFormat;
