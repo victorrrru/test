@@ -1,6 +1,7 @@
 package com.example.demo.collection.ActiveMQ;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +13,6 @@ import javax.jms.*;
  * @author Administrator
  * @date 2017/12/26 17:25
  */
-@SpringBootApplication
-@Component
 public class Consumer implements MessageListener, ExceptionListener {
     private String name = ActiveMQConnectionFactory.DEFAULT_USER;
     private String password = ActiveMQConnectionFactory.DEFAULT_PASSWORD;
@@ -26,21 +25,21 @@ public class Consumer implements MessageListener, ExceptionListener {
     private MessageConsumer consumer = null;
 
     public static Boolean isconnection=false;
-    @Resource
     private BankMapper bankMapper;
     /**
      *  连接ActiveMQ
      */
-    private void init() throws JMSException {
+    private void init(BankMapper bankMapper) throws JMSException {
         connectionFactory = new ActiveMQConnectionFactory(name,password,url);
         connection = connectionFactory.createConnection();
         session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         destination = session.createQueue(subject);
         consumer = session.createConsumer(destination);
+        this.bankMapper = bankMapper;
     }
 
-    public void consumerMessage() throws JMSException {
-        this.init();
+    public void consumerMessage(BankMapper bankMapper) throws JMSException {
+        this.init(bankMapper);
         //设置消息监听和异常监听
         consumer.setMessageListener(this);
         connection.setExceptionListener(this);

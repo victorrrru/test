@@ -7,8 +7,8 @@ import javax.jms.JMSException;
  * @date 2017/12/26 17:33
  */
 public class TestProduct {
-    public static void main(String[] args) throws JMSException {
-        for(int i=0;i<100000;i++){
+    public TestProduct() throws JMSException {
+        for(int i=0;i<100;i++){
             Product product = new Product();
             product.productMessage("Hello World!"+i);
             product.close();

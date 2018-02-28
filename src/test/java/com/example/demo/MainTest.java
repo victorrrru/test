@@ -61,8 +61,8 @@ public class MainTest {
     public void test5() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            double aLong = 1514477810000d;
-            double aLong1 = 1514482005000d;
+            double aLong = 1517414400000d;
+            double aLong1 = 1519833600000d;
             String format1 = format.format(aLong);
             String format2 = format.format(aLong1);
             Date parse = format.parse(format1);
@@ -70,6 +70,7 @@ public class MainTest {
             System.out.println(parse);
             System.out.println(parse1);
             System.out.println("----------");
+            System.out.println(System.currentTimeMillis());
         } catch (ParseException e) {
             e.printStackTrace();
         }
