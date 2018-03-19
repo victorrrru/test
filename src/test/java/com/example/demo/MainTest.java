@@ -4,14 +4,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -59,26 +57,29 @@ public class MainTest {
 
     @Test
     public void test5() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-            double aLong = 1517414400000d;
-            double aLong1 = 1519833600000d;
-            String format1 = format.format(aLong);
-            String format2 = format.format(aLong1);
-            Date parse = format.parse(format1);
-            Date parse1 = format.parse(format2);
-            System.out.println(parse);
-            System.out.println(parse1);
-            System.out.println("----------");
-            System.out.println(System.currentTimeMillis());
-        } catch (ParseException e) {
-            e.printStackTrace();
+        List<Integer> list1 = new ArrayList();
+        list1.add(1);
+        list1.add(3);
+        list1.add(5);
+        list1.add(7);
+        list1.add(9);
+        List<Integer> list2 = new ArrayList();
+        list2.add(4);
+        list2.add(6);
+        list2.add(8);
+        //list2.removeAll(list1);
+        //list1.retainAll(list2);
+        HashSet<Integer> set = new HashSet<>(list1);
+        ArrayList<Integer> list3 = new ArrayList<>();
+        for (Integer list : list2) {
+            if (set.add(list) == false) {
+                list3.add(list);
+            }
         }
+        list1.removeAll(list3);
+        list2.removeAll(list3);
+        System.out.println(list3);
+        System.out.println(list1);
+        System.out.println(list2);
     }
-
-    @Test
-    public void test6() {
-
-    }
-
 }
